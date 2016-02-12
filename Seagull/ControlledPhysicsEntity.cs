@@ -82,7 +82,7 @@ namespace Seagull
         {
             float bottomMidpoint;
 
-            if (tile.slantDepth)
+            if (tile.SlantDepth)
                 bottomMidpoint = (Z - tile.Z) + (Width / 2);
             else
                 bottomMidpoint = (X - tile.X) + (Width / 2);
@@ -94,7 +94,7 @@ namespace Seagull
                 Front >= tile.Front &&
                 Back <= tile.Back)
             {
-                if (tile.slantOpposite) collisionY = tile.Y - (bottomMidpoint * tile.Scale);
+                if (tile.SlantOpposite) collisionY = tile.Y - (bottomMidpoint * tile.Scale);
                 else collisionY = tile.Y + (bottomMidpoint * tile.Scale);
                 return true;
             }

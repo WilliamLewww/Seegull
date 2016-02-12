@@ -7,7 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seagull", "Seagull\Seagull.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seagull SDK", "Seagull SDK\Seagull SDK\Seagull SDK.csproj", "{1A30A0BA-F161-454C-BD32-2D1D9545F2B8}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Bridge", "Bridge\Bridge.shproj", "{75D096C9-6441-4E8A-86B1-212E1B74C992}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Bridge\Bridge.projitems*{1a30a0ba-f161-454c-bd32-2d1d9545f2b8}*SharedItemsImports = 4
+		Bridge\Bridge.projitems*{75d096c9-6441-4e8a-86b1-212e1b74c992}*SharedItemsImports = 13
+		Bridge\Bridge.projitems*{30649078-5167-4fb2-80d2-10fdd9057a77}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

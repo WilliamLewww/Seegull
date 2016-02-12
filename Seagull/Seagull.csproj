@@ -54,7 +54,6 @@
   <ItemGroup>
     <Compile Include="ControlledPhysicsEntity.cs" />
     <Compile Include="Environment.cs" />
-    <Compile Include="FoldingTile.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Main.cs" />
@@ -69,6 +68,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <Import Project="..\Bridge\Bridge.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

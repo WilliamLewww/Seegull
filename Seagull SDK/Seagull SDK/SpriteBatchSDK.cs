@@ -95,7 +95,7 @@ namespace Seagull_SDK
             {
                 vectors[x].X *= foldingTile.Size.X;
                 vectors[x].Z *= foldingTile.Size.Y;
-                if (foldingTile.slantDepth) vectors[x].Y *= foldingTile.Size.Y;
+                if (foldingTile.SlantDepth) vectors[x].Y *= foldingTile.Size.Y;
                 else vectors[x].Y *= foldingTile.Size.X;
                 vectors[x] += foldingTile.position;
             }
