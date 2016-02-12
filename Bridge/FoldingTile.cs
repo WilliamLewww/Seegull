@@ -15,6 +15,23 @@ class FoldingTile
     };
 
     [JsonProperty]
+    public float[,] MatrixPointFloat
+    {
+        get {
+            float[,] points = new float[4, 3];
+            for (int x = 0; x < 4; x++)
+            {
+                for (int y = 0; y < 3; y++)
+                {
+                    points[x, y] = Utlis.VectorToFloatArray(matrixPoint[x])[y];
+                }
+            }
+
+            return points;
+        }
+    }
+
+    [JsonProperty]
     public bool SlantDepth { get; set; }
     [JsonProperty]
     public bool SlantOpposite { get; set; }
