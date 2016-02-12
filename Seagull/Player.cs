@@ -22,13 +22,13 @@ namespace Seagull
         public double Facing
         {
             get { return facing; }
-            set { facing = Supplements.GetReferenceAngle(value); }
+            set { facing = Utlis.GetReferenceAngle(value); }
         }
 
         public double Pitch
         {
             get { return pitch; }
-            set { pitch = Supplements.LimitAngle(value, -90, 90); }
+            set { pitch = Utlis.LimitAngle(value, -90, 90); }
         }
 
         public Vector3d Forwards

@@ -3,7 +3,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Seagull
 {
-    static class Supplements
+    static class Utlis
     {
         public static double GetReferenceAngle(double x)
         {
