@@ -1,7 +1,7 @@
 ﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
-static class Utlis
+static class Utils
 {
     public static float[] VectorToFloatArray(Vector3 vectors)
     {

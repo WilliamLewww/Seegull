@@ -23,11 +23,22 @@ class FoldingTile
             {
                 for (int y = 0; y < 3; y++)
                 {
-                    points[x, y] = Utlis.VectorToFloatArray(matrixPoint[x])[y];
+                    points[x, y] = Utils.VectorToFloatArray(matrixPoint[x])[y];
                 }
             }
 
             return points;
+        }
+        set {
+            float[] points = new float[3];
+            for (int x = 0; x < 4; x++)
+            {
+                for (int y = 0; y < 3; y++)
+                {
+                    points[y] = value[x, y];
+                }
+                matrixPoint[x] = Utils.FloatArrayToVector(points);
+            }
         }
     }
 
@@ -40,21 +51,21 @@ class FoldingTile
     public Vector2 Size { get { return size; } set { size = value; } }
 
     [JsonProperty]
-    public float Width { get { return size.X; } }
+    public float Width { get { return size.X; } set { size.X = value; } }
     [JsonProperty]
-    public float Depth { get { return size.Y; } }
+    public float Depth { get { return size.Y; } set { size.Y = value; } }
 
     private float scaleVal;
     [JsonProperty]
-    public float Scale { get { return scaleVal; } }
+    public float Scale { get { return scaleVal; } set { scaleVal = value; } }
     public float Height { get { if (SlantDepth) return Depth * Scale; else return Width * Scale; } }
 
     [JsonProperty]
-    public float X { get { return position.X; } }
+    public float X { get { return position.X; } set { position.X = value; } }
     [JsonProperty]
-    public float Y { get { return position.Y; } }
+    public float Y { get { return position.Y; } set { position.Y = value; } }
     [JsonProperty]
-    public float Z { get { return position.Z; } }
+    public float Z { get { return position.Z; } set { position.Z = value; } }
 
     public float Left { get { return X; } }
     public float Right { get { return X + Width; } }
@@ -247,6 +258,12 @@ class FoldingTile
                 };
                 break;
         }
+    }
+
+    [JsonConstructor]
+    public FoldingTile()
+    {
+
     }
 
     public FoldingTile(Vector3 positionArgs, int width, int height)

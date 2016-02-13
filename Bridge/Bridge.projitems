@@ -11,6 +11,6 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)FoldingTile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SpriteBatch.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utlis.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils.cs" />
   </ItemGroup>
 </Project>

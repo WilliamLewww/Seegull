@@ -27,12 +27,12 @@ namespace Seagull
         public float Y { get { return (float)position.Y; } }
         public float Z { get { return (float)position.Z; } }
 
-        public float Left { get { return Utlis.GetMinValueVector(actualPoint, 0); } }
-        public float Right { get { return Utlis.GetMaxValueVector(actualPoint, 0); } }
-        public float Top { get { return Utlis.GetMinValueVector(actualPoint, 1); ; } }
-        public float Bottom { get { return Utlis.GetMaxValueVector(actualPoint, 1); ; } }
-        public float Front { get { return Utlis.GetMaxValueVector(actualPoint, 2); ; } }
-        public float Back { get { return Utlis.GetMinValueVector(actualPoint, 2); ; } }
+        public float Left { get { return Utils.GetMinValueVector(actualPoint, 0); } }
+        public float Right { get { return Utils.GetMaxValueVector(actualPoint, 0); } }
+        public float Top { get { return Utils.GetMinValueVector(actualPoint, 1); ; } }
+        public float Bottom { get { return Utils.GetMaxValueVector(actualPoint, 1); ; } }
+        public float Front { get { return Utils.GetMaxValueVector(actualPoint, 2); ; } }
+        public float Back { get { return Utils.GetMinValueVector(actualPoint, 2); ; } }
 
         public double Rotation { get { return rotation; } }
 
@@ -169,14 +169,14 @@ namespace Seagull
 
         public void GetTheoreticalPoints()
         {
-            theoreticalPoint[0] = Utlis.GetTheoreticalPoints(Utlis.GetMatrix(Size, new Vector3(X, Y, Z), Rotation), new Vector3(Size.X / 2, 0, Size.Z / 2));
-            theoreticalPoint[1] = Utlis.GetTheoreticalPoints(Utlis.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 90), new Vector3(Size.X / 2, 0, Size.Z / 2));
-            theoreticalPoint[2] = Utlis.GetTheoreticalPoints(Utlis.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 180), new Vector3(Size.X / 2, 0, Size.Z / 2));
-            theoreticalPoint[3] = Utlis.GetTheoreticalPoints(Utlis.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 270), new Vector3(Size.X / 2, 0, Size.Z / 2));
-            theoreticalPoint[4] = Utlis.GetTheoreticalPoints(Utlis.GetMatrix(Size, new Vector3(X, Y, Z), Rotation), new Vector3(Size.X / 2, Size.Y, Size.Z / 2));
-            theoreticalPoint[5] = Utlis.GetTheoreticalPoints(Utlis.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 90), new Vector3(Size.X / 2, Size.Y, Size.Z / 2));
-            theoreticalPoint[6] = Utlis.GetTheoreticalPoints(Utlis.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 180), new Vector3(Size.X / 2, Size.Y, Size.Z / 2));
-            theoreticalPoint[7] = Utlis.GetTheoreticalPoints(Utlis.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 270), new Vector3(Size.X / 2, Size.Y, Size.Z / 2));
+            theoreticalPoint[0] = Utils.GetTheoreticalPoints(Utils.GetMatrix(Size, new Vector3(X, Y, Z), Rotation), new Vector3(Size.X / 2, 0, Size.Z / 2));
+            theoreticalPoint[1] = Utils.GetTheoreticalPoints(Utils.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 90), new Vector3(Size.X / 2, 0, Size.Z / 2));
+            theoreticalPoint[2] = Utils.GetTheoreticalPoints(Utils.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 180), new Vector3(Size.X / 2, 0, Size.Z / 2));
+            theoreticalPoint[3] = Utils.GetTheoreticalPoints(Utils.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 270), new Vector3(Size.X / 2, 0, Size.Z / 2));
+            theoreticalPoint[4] = Utils.GetTheoreticalPoints(Utils.GetMatrix(Size, new Vector3(X, Y, Z), Rotation), new Vector3(Size.X / 2, Size.Y, Size.Z / 2));
+            theoreticalPoint[5] = Utils.GetTheoreticalPoints(Utils.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 90), new Vector3(Size.X / 2, Size.Y, Size.Z / 2));
+            theoreticalPoint[6] = Utils.GetTheoreticalPoints(Utils.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 180), new Vector3(Size.X / 2, Size.Y, Size.Z / 2));
+            theoreticalPoint[7] = Utils.GetTheoreticalPoints(Utils.GetMatrix(Size, new Vector3(X, Y, Z), Rotation + 270), new Vector3(Size.X / 2, Size.Y, Size.Z / 2));
 
             for (int x = 0; x < theoreticalPoint.Length; x++)
             {

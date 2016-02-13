@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
 namespace Seagull_SDK
@@ -164,8 +163,7 @@ namespace Seagull_SDK
             using (StreamReader file = File.OpenText("data.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                List<FoldingTile> foldingTileList = (List<FoldingTile>)serializer.Deserialize(file, typeof(List<FoldingTile>));
-                Console.WriteLine(foldingTileList[0].Width);
+                Main.foldingTileList = (List<FoldingTile>)serializer.Deserialize(file, typeof(List<FoldingTile>));
             }
 
             glControl1.Invalidate();
