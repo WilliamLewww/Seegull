@@ -152,7 +152,7 @@ namespace Seagull_SDK
 
         private void button3_Click(object sender, EventArgs e)
         {
-            File.WriteAllText("data.json", JsonConvert.SerializeObject(Main.foldingTileList));
+            File.WriteAllText(textBox7.Text + @"\data.json", JsonConvert.SerializeObject(Main.foldingTileList));
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -160,7 +160,7 @@ namespace Seagull_SDK
             Main.foldingTileList.Clear();
             Main.rectangleList.Clear();
 
-            using (StreamReader file = File.OpenText("data.json"))
+            using (StreamReader file = File.OpenText(textBox7.Text + @"\data.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 Main.foldingTileList = (List<FoldingTile>)serializer.Deserialize(file, typeof(List<FoldingTile>));

@@ -1,8 +1,6 @@
 ﻿using OpenTK;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Seagull
 {
@@ -13,17 +11,6 @@ namespace Seagull
 
         public void LoadContent()
         {
-            //using (Stream stream = File.Open("data.bin", FileMode.Open))
-            //{
-            //    BinaryFormatter formatter = new BinaryFormatter();
-
-            //    var foldingTileList = (List<FoldingTile>)formatter.Deserialize(stream);
-            //    foreach (FoldingTile foldingTile in foldingTileList)
-            //    {
-            //        tileList.Add(foldingTile);
-            //    }
-            //}
-
             int[] modifier = new int[1];
             modifier[0] = 0;
             int[] modifier2 = new int[1];
