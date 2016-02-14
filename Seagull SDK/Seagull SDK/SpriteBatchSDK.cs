@@ -81,7 +81,7 @@ namespace Seagull_SDK
             GL.End();
         }
 
-        public static void DrawFoldingTileSide(FoldingTile foldingTile, Color color)
+        public static void DrawFoldingTileFront(FoldingTile foldingTile, Color color)
         {
             Vector3[] vectors = new Vector3[4]
             {
@@ -111,10 +111,48 @@ namespace Seagull_SDK
                 if (vectors[x].Y > maxY) maxY = vectors[x].Y;
             }
 
-            GL.LineWidth(2.5f);
+            GL.LineWidth(1.0f);
             GL.Color3(color);
             GL.Begin(PrimitiveType.Lines);
             GL.Vertex2(minX, -minY); 
+            GL.Vertex2(maxX, -maxY);
+            GL.End();
+        }
+
+        public static void DrawFoldingTileSide(FoldingTile foldingTile, Color color)
+        {
+            Vector3[] vectors = new Vector3[4]
+            {
+                new Vector3(foldingTile.matrixPoint[0].X, foldingTile.matrixPoint[0].Y, foldingTile.matrixPoint[0].Z),
+                new Vector3(foldingTile.matrixPoint[1].X, foldingTile.matrixPoint[1].Y, foldingTile.matrixPoint[1].Z),
+                new Vector3(foldingTile.matrixPoint[2].X, foldingTile.matrixPoint[2].Y, foldingTile.matrixPoint[2].Z),
+                new Vector3(foldingTile.matrixPoint[3].X, foldingTile.matrixPoint[3].Y, foldingTile.matrixPoint[3].Z)
+            };
+
+            for (int x = 0; x < 4; x++)
+            {
+                vectors[x].X *= foldingTile.Size.X;
+                vectors[x].Z *= foldingTile.Size.Y;
+                if (foldingTile.SlantDepth) vectors[x].Y *= foldingTile.Size.Y;
+                else vectors[x].Y *= foldingTile.Size.X;
+                vectors[x] += foldingTile.position;
+            }
+
+            float minX = vectors[0].Z, minY = vectors[0].Y;
+            float maxX = vectors[0].Z, maxY = vectors[0].Y;
+
+            for (int x = 0; x < vectors.Length; x++)
+            {
+                if (vectors[x].Z < minX) minX = vectors[x].Z;
+                if (vectors[x].Y < minY) minY = vectors[x].Y;
+                if (vectors[x].Z > maxX) maxX = vectors[x].Z;
+                if (vectors[x].Y > maxY) maxY = vectors[x].Y;
+            }
+
+            GL.LineWidth(1.0f);
+            GL.Color3(color);
+            GL.Begin(PrimitiveType.Lines);
+            GL.Vertex2(minX, -minY);
             GL.Vertex2(maxX, -maxY);
             GL.End();
         }

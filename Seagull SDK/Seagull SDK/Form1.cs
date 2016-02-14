@@ -22,29 +22,11 @@ namespace Seagull_SDK
             screenHeight = glControl1.Height;
         }
 
-        private void glControl1_Load(object sender, EventArgs e)
+        public void Invalidate()
         {
-            glControl1.Paint += GlControl1_Paint;
-        }
-
-        private void GlControl1_Paint(object sender, PaintEventArgs e)
-        {
-            glControl1.MakeCurrent();
-            GL.ClearColor(Color.CornflowerBlue);
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
-
-            SpriteBatchSDK.Begin(screenWidth, screenHeight);
-            main.DrawTop();
-
-            glControl1.SwapBuffers();
-        }
-
-        private void glControl2_Load(object sender, EventArgs e)
-        {
-            glControl2.Paint += GlControl2_Paint;
+            glControl1.Invalidate();
+            glControl2.Invalidate();
+            glControl3.Invalidate();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,14 +40,12 @@ namespace Seagull_SDK
                 textBox3.Text = Main.selectedTile.Y.ToString();
                 textBox4.Text = Main.selectedTile.Size.X.ToString();
                 textBox5.Text = Main.selectedTile.Size.Y.ToString();
-                glControl1.Invalidate();
-                glControl2.Invalidate();
+                Invalidate();
             }
             if (comboBox1.Text == "Rectangular Prism")
             {
                 Main.rectangleList.Add(new RectangularPrismObject(new Vector3(0, 0, 0), new Vector3(100, 100, 100)));
-                glControl1.Invalidate();
-                glControl2.Invalidate();
+                Invalidate();
             }
         }
 
@@ -74,8 +54,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox1.Text, out value);
             Main.selectedTile.position.X = value;
-            glControl1.Invalidate();
-            glControl2.Invalidate();
+            Invalidate();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -83,8 +62,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox2.Text, out value);
             Main.selectedTile.position.Z = value;
-            glControl1.Invalidate();
-            glControl2.Invalidate();
+            Invalidate();
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -92,8 +70,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox3.Text, out value);
             Main.selectedTile.position.Y = value;
-            glControl1.Invalidate();
-            glControl2.Invalidate();
+            Invalidate();
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -101,8 +78,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox4.Text, out value);
             Main.selectedTile.Size = new Vector2(value, Main.selectedTile.Size.Y);
-            glControl1.Invalidate();
-            glControl2.Invalidate();
+            Invalidate();
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -110,8 +86,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox5.Text, out value);
             Main.selectedTile.Size = new Vector2(Main.selectedTile.Size.X, value);
-            glControl1.Invalidate();
-            glControl2.Invalidate();
+            Invalidate();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -146,8 +121,7 @@ namespace Seagull_SDK
                     Main.selectedTile.TranslateDown(2, original, value);
                     break;
             }
-            glControl1.Invalidate();
-            glControl2.Invalidate();
+            Invalidate();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -166,8 +140,22 @@ namespace Seagull_SDK
                 Main.foldingTileList = (List<FoldingTile>)serializer.Deserialize(file, typeof(List<FoldingTile>));
             }
 
-            glControl1.Invalidate();
-            glControl2.Invalidate();
+            Invalidate();
+        }
+
+        private void GlControl1_Paint(object sender, PaintEventArgs e)
+        {
+            glControl1.MakeCurrent();
+            GL.ClearColor(Color.CornflowerBlue);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+
+            SpriteBatchSDK.Begin(screenWidth, screenHeight);
+            main.DrawTop();
+
+            glControl1.SwapBuffers();
         }
 
         private void GlControl2_Paint(object sender, PaintEventArgs e)
@@ -180,9 +168,39 @@ namespace Seagull_SDK
             GL.LoadIdentity();
 
             SpriteBatchSDK.Begin(screenWidth, screenHeight);
-            main.DrawSide();
+            main.DrawFront();
 
             glControl2.SwapBuffers();
+        }
+
+        private void GlControl3_Paint(object sender, PaintEventArgs e)
+        {
+            glControl3.MakeCurrent();
+            GL.ClearColor(Color.CornflowerBlue);
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+
+            SpriteBatchSDK.Begin(screenWidth, screenHeight);
+            main.DrawSide();
+
+            glControl3.SwapBuffers();
+        }
+
+        private void glControl1_Load(object sender, EventArgs e)
+        {
+            glControl1.Paint += GlControl1_Paint;
+        }
+
+        private void glControl2_Load(object sender, EventArgs e)
+        {
+            glControl2.Paint += GlControl2_Paint;
+        }
+
+        private void glControl3_Load(object sender, EventArgs e)
+        {
+            glControl3.Paint += GlControl3_Paint;
         }
     }
 }

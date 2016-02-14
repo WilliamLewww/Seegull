@@ -43,6 +43,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.glControl3 = new OpenTK.GLControl();
             this.SuspendLayout();
             // 
             // glControl1
@@ -164,7 +165,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1172, 10);
+            this.button3.Location = new System.Drawing.Point(1222, 10);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 12;
@@ -174,7 +175,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1172, 39);
+            this.button4.Location = new System.Drawing.Point(1222, 39);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 13;
@@ -184,17 +185,28 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(1105, 68);
+            this.textBox7.Location = new System.Drawing.Point(1156, 66);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(142, 20);
             this.textBox7.TabIndex = 14;
             this.textBox7.Text = "..\\..\\..\\..\\Seagull\\bin\\Debug";
             // 
+            // glControl3
+            // 
+            this.glControl3.BackColor = System.Drawing.Color.Black;
+            this.glControl3.Location = new System.Drawing.Point(658, 424);
+            this.glControl3.Name = "glControl3";
+            this.glControl3.Size = new System.Drawing.Size(640, 405);
+            this.glControl3.TabIndex = 15;
+            this.glControl3.VSync = false;
+            this.glControl3.Load += new System.EventHandler(this.glControl3_Load);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 841);
+            this.ClientSize = new System.Drawing.Size(1309, 841);
+            this.Controls.Add(this.glControl3);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -234,6 +246,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox7;
+        private OpenTK.GLControl glControl3;
     }
 }
 

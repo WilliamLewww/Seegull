@@ -1,6 +1,7 @@
-﻿using OpenTK;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 
 namespace Seagull
 {
@@ -11,26 +12,32 @@ namespace Seagull
 
         public void LoadContent()
         {
-            int[] modifier = new int[1];
-            modifier[0] = 0;
-            int[] modifier2 = new int[1];
-            modifier2[0] = 3;
-
-            for (int x = 0; x < 4; x++)
+            using (StreamReader file = File.OpenText("data.json"))
             {
-                for (int y = 0; y < 10; y++)
-                {
-                    tileList.Add(new FoldingTile(new Vector3(15 * x, (25f / 4) * y, 25 * y), 15, 25, true, modifier, .25f));
-                }
+                JsonSerializer serializer = new JsonSerializer();
+                tileList = (List<FoldingTile>)serializer.Deserialize(file, typeof(List<FoldingTile>));
             }
 
-            for (int x = 0; x < 10; x++)
-            {
-                for (int y = 0; y < 4; y++)
-                {
-                    tileList.Add(new FoldingTile(new Vector3(25 * x, (25f / 2) * x, 15 * y), 25, 15, true, modifier2, .5f));
-                }
-            }
+            //int[] modifier = new int[1];
+            //modifier[0] = 0;
+            //int[] modifier2 = new int[1];
+            //modifier2[0] = 3;
+
+            //for (int x = 0; x < 4; x++)
+            //{
+            //    for (int y = 0; y < 10; y++)
+            //    {
+            //        tileList.Add(new FoldingTile(new Vector3(15 * x, (25f / 4) * y, 25 * y), 15, 25, true, modifier, .25f));
+            //    }
+            //}
+
+            //for (int x = 0; x < 10; x++)
+            //{
+            //    for (int y = 0; y < 4; y++)
+            //    {
+            //        tileList.Add(new FoldingTile(new Vector3(25 * x, (25f / 2) * x, 15 * y), 25, 15, true, modifier2, .5f));
+            //    }
+            //}
 
             //for (int x = 0; x < 10; x++)
             //{

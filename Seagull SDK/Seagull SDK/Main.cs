@@ -21,6 +21,17 @@ namespace Seagull_SDK
             }
         }
 
+        public void DrawFront()
+        {
+            foreach (FoldingTile foldingTile in foldingTileList)
+            {
+                if (foldingTile == selectedTile)
+                    SpriteBatchSDK.DrawFoldingTileFront(foldingTile, Color.Red);
+                else
+                    SpriteBatchSDK.DrawFoldingTileFront(foldingTile, Color.Black);
+            }
+        }
+
         public void DrawSide()
         {
             foreach (FoldingTile foldingTile in foldingTileList)
