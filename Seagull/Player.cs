@@ -73,8 +73,8 @@ namespace Seagull
             if (Input.KeyDown(Key.D))
                 body.position -= Sideways * 100 * gameTime;
 
-            Facing += ((Mouse.GetCursorState().X - Game1.screenX) - (Game1.screenWidth / 2)) * -.05f;
-            Pitch += ((Mouse.GetCursorState().Y - Game1.screenY) - (Game1.screenHeight / 2)) * -.05f;
+            Facing += ((Mouse.GetCursorState().X - Game1.screenX) - (Game1.screenWidth / 2)) * -.025f;
+            Pitch += ((Mouse.GetCursorState().Y - Game1.screenY) - (Game1.screenHeight / 2)) * -.025f;
 
             if (body.onGround == true)
             {
