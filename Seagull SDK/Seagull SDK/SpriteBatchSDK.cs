@@ -110,12 +110,25 @@ namespace Seagull_SDK
                 if (vectors[x].Y > maxY) maxY = vectors[x].Y;
             }
 
-            GL.LineWidth(1.0f);
-            GL.Color3(color);
-            GL.Begin(PrimitiveType.Lines);
-            GL.Vertex2(minX, -minY); 
-            GL.Vertex2(maxX, -maxY);
-            GL.End();
+            if (foldingTile.SlantDepth == true)
+            {
+                GL.Color3(color);
+                GL.Begin(PrimitiveType.Quads);
+                GL.Vertex2(minX, minY);
+                GL.Vertex2(minX, -maxY);
+                GL.Vertex2(maxX, -maxY);
+                GL.Vertex2(maxX, minY);
+                GL.End();
+            }
+            else
+            {
+                GL.LineWidth(1.0f);
+                GL.Color3(color);
+                GL.Begin(PrimitiveType.Lines);
+                GL.Vertex2(minX, -minY);
+                GL.Vertex2(maxX, -maxY);
+                GL.End();
+            }
         }
 
         public static void DrawFoldingTileSide(FoldingTile foldingTile, Color color)
@@ -148,12 +161,25 @@ namespace Seagull_SDK
                 if (vectors[x].Y > maxY) maxY = vectors[x].Y;
             }
 
-            GL.LineWidth(1.0f);
-            GL.Color3(color);
-            GL.Begin(PrimitiveType.Lines);
-            GL.Vertex2(minX, -minY);
-            GL.Vertex2(maxX, -maxY);
-            GL.End();
+            if (foldingTile.SlantDepth == false && foldingTile.Scale != 0)
+            {
+                GL.Color3(color);
+                GL.Begin(PrimitiveType.Quads);
+                GL.Vertex2(minX, minY);
+                GL.Vertex2(minX, -maxY);
+                GL.Vertex2(maxX, -maxY);
+                GL.Vertex2(maxX, minY);
+                GL.End();
+            }
+            else
+            {
+                GL.LineWidth(1.0f);
+                GL.Color3(color);
+                GL.Begin(PrimitiveType.Lines);
+                GL.Vertex2(minX, -minY);
+                GL.Vertex2(maxX, -maxY);
+                GL.End();
+            }
         }
     }
 }

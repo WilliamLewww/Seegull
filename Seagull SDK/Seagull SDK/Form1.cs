@@ -22,7 +22,7 @@ namespace Seagull_SDK
             screenHeight = glControl1.Height;
         }
 
-        public void Invalidate()
+        public void InvalidateControl()
         {
             glControl1.Invalidate();
             glControl2.Invalidate();
@@ -40,12 +40,12 @@ namespace Seagull_SDK
                 textBox3.Text = Main.selectedTile.Y.ToString();
                 textBox4.Text = Main.selectedTile.Size.X.ToString();
                 textBox5.Text = Main.selectedTile.Size.Y.ToString();
-                Invalidate();
+                InvalidateControl();
             }
             if (comboBox1.Text == "Rectangular Prism")
             {
                 Main.rectangleList.Add(new RectangularPrismObject(new Vector3(0, 0, 0), new Vector3(100, 100, 100)));
-                Invalidate();
+                InvalidateControl();
             }
         }
 
@@ -54,7 +54,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox1.Text, out value);
             Main.selectedTile.position.X = value;
-            Invalidate();
+            InvalidateControl();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox2.Text, out value);
             Main.selectedTile.position.Z = value;
-            Invalidate();
+            InvalidateControl();
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox3.Text, out value);
             Main.selectedTile.position.Y = value;
-            Invalidate();
+            InvalidateControl();
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox4.Text, out value);
             Main.selectedTile.Size = new Vector2(value, Main.selectedTile.Size.Y);
-            Invalidate();
+            InvalidateControl();
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace Seagull_SDK
             float value = 0;
             float.TryParse(textBox5.Text, out value);
             Main.selectedTile.Size = new Vector2(Main.selectedTile.Size.X, value);
-            Invalidate();
+            InvalidateControl();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -121,7 +121,7 @@ namespace Seagull_SDK
                     Main.selectedTile.TranslateDown(2, original, value);
                     break;
             }
-            Invalidate();
+            InvalidateControl();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace Seagull_SDK
                 Main.foldingTileList = (List<FoldingTile>)serializer.Deserialize(file, typeof(List<FoldingTile>));
             }
 
-            Invalidate();
+            InvalidateControl();
         }
 
         private void GlControl1_Paint(object sender, PaintEventArgs e)
